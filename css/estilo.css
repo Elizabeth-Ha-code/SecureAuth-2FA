@@ -1,1 +1,121 @@
+body {
+  background-image: url('../img/imagen5.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+:root {
+  --crema: #fffbf0;
+  --crema-claro: #fffae6;
+  --naranja: #832e00;
+  --celeste: #03afff;
+  --azul: #00509f;
+  --amarillo: #d0a702;
+  --verde-cana: #284705;
+  --negro: #222;
+  --fondo-navbar: #fffbe9e0;
+  --shadow-negro: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-negro-focus: 0 0 0 0.2rem rgba(255, 152, 0, 0.15); /* naranja */
+}
 
+/* Navbar */
+.navbar-custom {
+  background: var(--fondo-navbar);
+  box-shadow: var(--shadow-negro);
+  border-bottom: 2px solid var(--naranja);
+}
+
+.navbar-brand-custom {
+  color: var(--naranja) !important;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.nav-link-custom {
+  color: var(--verde-cana) !important;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link-custom:hover {
+  color: var(--verde-cana) !important;
+  font-weight: bold;
+}
+
+/* Card de registro */
+.card {
+  background: var(--crema);
+  border: none;
+  border-radius: 18px;
+  box-shadow: var(--shadow-negro);
+}
+
+/* Texto destacado */
+.text-highlight {
+  color: var(--naranja);
+  font-weight: bold;
+}
+
+/* Botón principal */
+.btn-main {
+  background: linear-gradient(90deg, var(--naranja), var(--amarillo));
+  color: var(--crema);
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: var(--shadow-negro);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-main:hover, .btn-main:focus {
+  background: linear-gradient(90deg, var(--verde-cana), var(--celeste));
+  box-shadow: var(--shadow-negro-focus);
+  color: var(--crema);
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  border: 1.5px solid var(--celeste);
+  background: var(--crema-claro);
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+  border-color: var(--naranja);
+  box-shadow: var(--shadow-negro-focus);
+}
+
+/* Etiquetas */
+.form-label {
+  color: var(--naranja);
+  font-weight:bold;
+  
+}
+
+/* Enlace de login */
+.btn-link {
+  color: var(--amarillo);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.btn-link:hover {
+  color: var(--celeste);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .card {
+    padding: 1.5rem !important;
+  }
+  .navbar-brand-custom {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,79 @@
+:root {
+  --blanco: #ffffff;
+  --celeste: #e0f7fa;
+  --azul-claro: #81d4fa;
+  --azul: #1976d2;
+  --azul-oscuro: #0d47a1;
+  --negro: #000000;
+  --fondo-navbar: #e3f2fd;
+  --shadow-negro: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-negro-focus: 0 0 0 0.2rem rgba(25, 118, 210, 0.15);
+}
+
+/* Actualiza los colores en las clases */
+body {
+  background-color: var(--celeste);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.98); /* blanco con opacidad */
+}
+
+.btn-pink {
+  background-color: var(--azul);
+  color: var(--blanco);
+}
+.btn-pink:hover {
+  background-color: var(--azul-oscuro);
+  color: var(--blanco);
+}
+
+.bg-pink {
+  background-color: var(--azul-claro);
+}
+.card-header.bg-pink {
+  background-color: var(--azul);
+}
+.text-pink {
+  color: var(--azul);
+}
+
+.navbar,
+.navbar-custom {
+  background-color: var(--fondo-navbar) !important;
+}
+
+.navbar-brand,
+.navbar-brand-custom {
+  color: var(--azul) !important;
+}
+
+.nav-link,
+.nav-link-custom {
+  color: var(--azul-oscuro) !important;
+}
+.nav-link:hover {
+  color: var(--azul) !important;
+}
+
+.btn-primary {
+  background-color: var(--azul);
+  border-color: var(--azul);
+  color: var(--blanco);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+  color: var(--blanco);
+}
+
+header {
+  background-color: var(--azul);
+  color: var(--blanco);
+}
+
+table {
+  background-color: var(--blanco);
+  color: var(--azul-oscuro);
+}
