@@ -1,0 +1,1 @@
+{ "require": { "robthree/twofactorauth": "^1.8", "endroid/qr-code": "^5.0" } }
