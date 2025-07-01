@@ -4,10 +4,18 @@
 la cual el cliente llena un formulario con su consulta y el administrador   se registra  o inicia sesión y visualiza las consultas o citas de sus clientes.
 
   
-## Este proyecto implementa dos métodos de seguridad para proteger páginas web desde validación de formularios y token 🔐 para autorizacion del administrador.
+## Este proyecto implementa dos métodos de seguridad para proteger páginas web desde validación de formularios y token 🔐 para autorización del administrador.
 
 ### Incluye carpetas📂 
 - css: 3 archivos con diferentes estilos
 - img: imágenes de fondo  y de validación de envío de información.
 - vendor:
+
+## Herramientas 
+ - Visual code 
+
+## Herramientas externas 
+- xammp
+- MySQL
+
 
