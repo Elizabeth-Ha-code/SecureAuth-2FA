@@ -24,7 +24,28 @@ $motivo = $_POST['motivo'];
 
 // Ejecutar la sentencia
 if ($stmt->execute()) {
-    echo "Registro guardado exitosamente.";
+    // Mostrar modal solo si el registro fue exitoso
+    if ($stmt && $stmt->affected_rows > 0): 
+        $mensaje = "Registro guardado exitosamente.";
+        ?>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+                <img src="img/imegen4.jpg" alt="Éxito" class="success-img">
+                <p><?php echo htmlspecialchars($mensaje); ?></p>
+                <p>Redirigiendo en 3 segundos...</p>
+            </div>
+        </div>
+        <script>
+            window.onclick = function(event) {
+                var modal = document.getElementById('myModal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <?php
+    endif;
 } else {
     echo "Error al guardar el registro: " . $stmt->error;
 }
@@ -81,23 +102,6 @@ $conn->close();
     </script>
 </head>
 <body>
-<?php if (!empty($mensaje)): ?>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-            <img src="img/imagen4.png" alt="Éxito" class="success-img">
-            <p><?php echo htmlspecialchars($mensaje); ?></p>
-            <p>Redirigiendo en 3 segundos...</p>
-        </div>
-    </div>
-    <script>
-        window.onclick = function(event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-<?php endif; ?>
+
 </body>
 </html>
