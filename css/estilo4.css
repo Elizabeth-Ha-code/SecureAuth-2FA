@@ -1,0 +1,77 @@
+/* Tonos mostaza */
+:root {
+  --mostaza: #fbad11;
+  --mostaza-oscuro: #f49209ff;
+  --mostaza-claro: #ffe4afff;
+}
+
+body {
+  background: var(--mostaza-claro);
+}
+
+/* Alerta personalizada */
+.alert-custom {
+  background-color: var(--mostaza);
+  color: #fff;
+  border: none;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+/* Botón volver */
+.btn-volver {
+  background-color: var(--mostaza-oscuro);
+  border: none;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.btn-volver:hover {
+  background-color: var(--mostaza);
+}
+
+/* Iconos animados */
+.bi {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.bi:hover {
+  color: #ffeb99;
+}
+
+.icon-beat {
+  animation: beat-fade 1.5s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes beat-fade {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}

@@ -1,121 +1,219 @@
+/* ====== BASE Y VARIABLES ====== */
+:root {
+  --amarillo-pastel: #fbad11;
+  --verde-menta: #0b2e4a;
+  --azul-celeste: #0e5db3;
+  --gris-claro: #f9fafb;
+  --gris-oscuro: #222831;
+  --fondo-navbar: #e6f0ff;
+  --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-focus: 0 0 0 0.3rem rgba(92, 169, 251, 0.4);
+}
+
+/* ====== BODY ====== */
 body {
   background-image: url('../img/imagen fondo.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-}
-:root {
-  --crema: #fffbf0;
-  --crema-claro: #fffae6;
-  --naranja: #832e00;
-  --celeste: #03afff;
-  --azul: #00509f;
-  --amarillo: #d0a702;
-  --verde-cana: #284705;
-  --negro: #222;
-  --fondo-navbar: #fffbe9e0;
-  --shadow-negro: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-negro-focus: 0 0 0 0.2rem rgba(255, 152, 0, 0.15); /* naranja */
+  font-family: 'Lucida Bright', serif;
+  color: var(--gris-oscuro);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  animation: fadeIn 1s ease forwards;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Navbar */
+/* ====== ANIMACIONES ====== */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== NAVBAR ====== */
 .navbar-custom {
   background: var(--fondo-navbar);
-  box-shadow: var(--shadow-negro);
-  border-bottom: 2px solid var(--naranja);
+  box-shadow: var(--shadow-default);
+  border-bottom: 3px solid var(--azul-celeste);
+  transition: background-color 0.3s ease;
+  padding: 0.8rem 1.5rem;
+}
+
+.navbar-custom:hover {
+  background-color: #d4e5ff;
 }
 
 .navbar-brand-custom {
-  color: var(--naranja) !important;
-  font-weight: bold;
-  font-size: 1.3rem;
-  letter-spacing: 1px;
+  color: var(--verde-menta) !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 1.2px;
 }
 
 .nav-link-custom {
-  color: var(--verde-cana) !important;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.nav-link-custom:hover {
-  color: var(--verde-cana) !important;
-  font-weight: bold;
-}
-
-/* Card de registro */
-.card {
-  background: var(--crema);
-  border: none;
-  border-radius: 18px;
-  box-shadow: var(--shadow-negro);
-}
-
-/* Texto destacado */
-.text-highlight {
-  color: var(--naranja);
-  font-weight: bold;
-}
-
-/* Botón principal */
-.btn-main {
-  background: linear-gradient(90deg, var(--naranja), var(--amarillo));
-  color: var(--crema);
-  border: none;
+  color: var(--gris-oscuro) !important;
   font-weight: 600;
-  border-radius: 8px;
-  box-shadow: var(--shadow-negro);
-  transition: background 0.2s, box-shadow 0.2s;
+  margin-left: 1.2rem;
+  font-size: 1.05rem;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.btn-main:hover, .btn-main:focus {
-  background: linear-gradient(90deg, var(--verde-cana), var(--celeste));
-  box-shadow: var(--shadow-negro-focus);
-  color: var(--crema);
+.nav-link-custom::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: var(--azul-celeste);
+  transition: width 0.4s ease;
+  border-radius: 2px;
 }
 
-/* Inputs */
+.nav-link-custom:hover,
+.nav-link-custom:focus {
+  color: var(--azul-celeste) !important;
+  font-weight: 700;
+}
+
+.nav-link-custom:hover::after,
+.nav-link-custom:focus::after {
+  width: 100%;
+}
+
+/* ====== CARD DE CONTENIDO ====== */
+.card {
+  background: var(--amarillo-pastel);
+  border-radius: 20px;
+  border: none;
+  padding: 2.5rem 3rem;
+  color: var(--gris-oscuro);
+  box-shadow: var(--shadow-default);
+  animation: slideUpFade 0.8s ease forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+/* ====== FORMULARIO ====== */
+.form-label {
+  color: var(--verde-menta);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 .form-control {
-  border-radius: 8px;
-  border: 1.5px solid var(--celeste);
-  background: var(--crema-claro);
-  box-shadow: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--gris-claro);
+  border: 1.5px solid var(--azul-celeste);
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.05rem;
+  color: var(--gris-oscuro);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control::placeholder {
+  color: #8a98a8;
+  font-style: italic;
 }
 
 .form-control:focus {
-  border-color: var(--naranja);
-  box-shadow: var(--shadow-negro-focus);
+  border-color: var(--amarillo-pastel);
+  box-shadow: var(--shadow-focus);
+  outline: none;
 }
 
-/* Etiquetas */
-.form-label {
-  color: var(--naranja);
-  font-weight:bold;
-  
+/* ====== BOTÓN PRINCIPAL ====== */
+.btn-main {
+  background: linear-gradient(90deg, var(--verde-menta), var(--azul-celeste));
+  color: var(--gris-claro);
+  border: none;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: var(--shadow-default);
+  padding: 0.75rem 1.8rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-/* Enlace de login */
-.btn-link {
-  color: var(--amarillo);
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s;
+.btn-main:hover,
+.btn-main:focus {
+  background: linear-gradient(90deg, var(--verde-menta), var(--azul-celeste));
+  box-shadow: var(--shadow-focus);
+  transform: scale(1.07);
+  color: var(--gris-claro);
 }
 
-.btn-link:hover {
-  color: var(--celeste);
-  text-decoration: underline;
+/* ====== TEXTO DESTACADO ====== */
+.text-highlight {
+  color: var(--azul-celeste);
+  font-weight: 700;
 }
 
-/* Responsive */
+.text-highlight:hover {
+  color: var(--amarillo-pastel);
+}
+
+/* ====== IMÁGENES ====== */
+.imagen-bienvenida {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: var(--shadow-default);
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* ====== RESPONSIVE ====== */
 @media (max-width: 576px) {
-  .card {
-    padding: 1.5rem !important;
+  body {
+    font-size: 1rem;
+    line-height: 1.5;
   }
+
+  .card {
+    padding: 1.5rem 1.8rem !important;
+    margin: 1.5rem 1rem;
+  }
+
   .navbar-brand-custom {
+    font-size: 1.1rem;
+  }
+
+  .nav-link-custom {
+    margin-left: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .btn-main {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .form-control {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .form-label {
     font-size: 1rem;
   }
 }

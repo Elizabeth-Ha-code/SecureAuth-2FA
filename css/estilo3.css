@@ -1,42 +1,44 @@
 :root {
   --blanco: #ffffff;
-  --celeste: #e3f2fd;
-  --azul: #1976d2;
-  --azul-oscuro: #0d47a1;
-  --shadow-azul: 0 2px 8px rgba(25, 118, 210, 0.08);
-  --shadow-azul-focus: 0 0 0 0.2rem rgba(25, 118, 210, 0.15);
+  --celeste: #e6f0ff; /* fondo suave */
+  --amarillo-pastel: #fbad11;
+  --verde-menta: #0b2e4a;
+  --azul-celeste: #0e5db3;
+  --shadow-azul: 0 2px 8px rgba(14, 93, 179, 0.08);
+  --shadow-azul-focus: 0 0 0 0.2rem rgba(14, 93, 179, 0.15);
 }
 
 body {
-  background: var(--celeste);
+  background: var(--amarillo-pastel);
 }
 
 .card, table {
   background: var(--blanco);
-  color: #000;
+  color: var(--amarillo-pastel);
 }
 
 header {
-  background-color: var(--azul);
+  background-color: var(--azul-celeste);
   color: var(--blanco);
 }
 
 .btn-primary {
-  background-color: var(--azul);
-  border-color: var(--azul);
-  color: var(--blanco);
+  background-color: var(--amarillo-pastel);
+  border-color: var(--amarillo-pastel);
+  color: var(--verde-menta);
 }
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: var(--azul-oscuro);
-  border-color: var(--azul-oscuro);
+  background-color: var(--azul-celeste);
+  border-color: var(--azul-celeste);
+  color: var(--blanco);
 }
 
 .navbar {
   background-color: var(--celeste) !important;
 }
 .nav-link:hover {
-  color: var(--azul) !important;
+  color: var(--azul-celeste) !important;
 }
 
 .confetti {
@@ -49,20 +51,24 @@ header {
   animation: fall 3s linear infinite;
   z-index: 1050;
 }
+
 @keyframes fall {
-  0% { transform: translateY(-40px) rotate(0deg);}
-  100% { transform: translateY(100vh) rotate(360deg);}
+  0% { transform: translateY(-40px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
 }
+
 .modal-backdrop-custom {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
   background: rgba(0,0,0,0.2);
   z-index: 1040;
 }
+
 .welcome-box {
   background: var(--blanco);
   border-radius: 18px;
   padding: 2.5rem 2rem;
   max-width: 400px;
   text-align: center;
+  box-shadow: var(--shadow-azul);
 }
