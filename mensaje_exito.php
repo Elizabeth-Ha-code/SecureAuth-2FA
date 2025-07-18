@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "cereza_08";
+$password = "";
 $dbname = "clinica";
 
 // Crear conexión
@@ -12,32 +12,69 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Preparar y vincular
-$stmt = $conn->prepare("INSERT INTO pacientes (nombre, cedula, edad, motivo) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssis", $nombre, $cedula, $edad, $motivo);
+// Verificar método y existencia de campos
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['nombre'], $_POST['cedula'], $_POST['edad'], $_POST['motivo'])) {
+    
+    // Limpiar y validar entradas
+    $nombre = trim($_POST['nombre']);
+    $cedula = trim($_POST['cedula']);
+    $edad = trim($_POST['edad']);
+    $motivo = trim($_POST['motivo']);
 
-// Obtener datos del formulario de forma segura
-$nombre = $_POST['nombre'];
-$cedula = $_POST['cedula'];
-$edad = (int)$_POST['edad'];
-$motivo = $_POST['motivo'];
+    $errores = [];
 
-// Ejecutar la sentencia
-if ($stmt->execute()) {
-    // Mostrar modal solo si el registro fue exitoso
-    if ($stmt && $stmt->affected_rows > 0): 
+    // Validación del nombre (solo letras y espacios)
+    if (empty($nombre) || !preg_match("/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,100}$/u", $nombre)) {
+        $errores[] = "Nombre inválido. Solo letras y mínimo 3 caracteres.";
+    }
+
+    // Validación de cédula (formato: 00-0000-0000)
+    if (!preg_match("/^\d{2}-\d{4}-\d{4}$/", $cedula)) {
+        $errores[] = "Cédula inválida. Use el formato 00-0000-0000.";
+    }
+
+    // Validación de edad (solo entre 0 y 17)
+    if (!filter_var($edad, FILTER_VALIDATE_INT) || $edad < 0 || $edad > 17) {
+        $errores[] = "Edad inválida. Debe estar entre 0 y 17 años.";
+    }
+
+    // Validación del motivo (no vacío y máximo 255 caracteres)
+    if (empty($motivo) || strlen($motivo) > 255) {
+        $errores[] = "Motivo inválido. No puede estar vacío ni exceder los 255 caracteres.";
+    }
+
+    // Si hay errores, mostrarlos
+    if (!empty($errores)) {
+        foreach ($errores as $error) {
+            echo "<p style='color:red;'>$error</p>";
+        }
+        exit();
+    }
+
+    // Convertir edad a entero
+    $edad = (int)$edad;
+
+    // Preparar e insertar
+    $stmt = $conn->prepare("INSERT INTO pacientes (nombre, cedula, edad, motivo) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssis", $nombre, $cedula, $edad, $motivo);
+
+    if ($stmt->execute()) {
         $mensaje = "Registro guardado exitosamente.";
         ?>
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal" style="display: block;">
             <div class="modal-content" style="box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); background: linear-gradient(135deg, #e0ffe8 0%, #f0f9ff 100%);">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'" title="Cerrar">&times;</span>
-            <img src="img/imegen4.jpg" alt="Éxito" class="success-img" style="border-radius: 50%; border: 4px solid #efb108ff; box-shadow: 0 4px 12px rgba(175, 149, 76, 0.2);">
-            <h2 style="color: #aa7d03ff; margin-bottom: 10px;">¡Éxito!</h2>
-            <p style="font-size: 25px; color: #333;"><?php echo htmlspecialchars($mensaje); ?></p>
-            <p style="color: #888; font-size: 20px;">Redirigiendo en 3 segundos...</p>
+                <span class="close" onclick="document.getElementById('myModal').style.display='none'" title="Cerrar">&times;</span>
+                <img src="img/imegen4.jpg" alt="Éxito" class="success-img" style="border-radius: 50%; border: 4px solid #efb108ff; box-shadow: 0 4px 12px rgba(175, 149, 76, 0.2);">
+                <h2 style="color: #aa7d03ff; margin-bottom: 10px;">¡Éxito!</h2>
+                <p style="font-size: 25px; color: #333;"><?php echo htmlspecialchars($mensaje); ?></p>
+                <p style="color: #888; font-size: 20px;">Redirigiendo en 3 segundos...</p>
             </div>
         </div>
         <script>
+            setTimeout(() => {
+                window.location.href = "index.php"; // o donde quieras redirigir
+            }, 3000);
+
             window.onclick = function(event) {
                 var modal = document.getElementById('myModal');
                 if (event.target == modal) {
@@ -46,13 +83,15 @@ if ($stmt->execute()) {
             }
         </script>
         <?php
-    endif;
+    } else {
+        echo "<p style='color:red;'>Error al guardar el registro: " . $stmt->error . "</p>";
+    }
+
+    $stmt->close();
 } else {
-    echo "Error al guardar el registro: " . $stmt->error;
+    echo "<p style='color:red;'>Acceso no autorizado o campos incompletos.</p>";
 }
 
-// Cerrar conexiones
-$stmt->close();
 $conn->close();
 ?>
 
