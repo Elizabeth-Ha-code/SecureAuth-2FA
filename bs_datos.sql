@@ -19,5 +19,12 @@ CREATE TABLE usuarios (
   password VARCHAR(255),
   secret VARCHAR(32)
 );
+
 select *from  usuarios;
+select*  from  pacientes;
+
 /* delete from usuarios where id = 2 */
+/*DELETE FROM pacientes WHERE id IN (4,5,6,7,8,9,10,11,12,13,14,15,16);*/
+/*DELETE FROM usuarios WHERE id BETWEEN 1 AND 21;*/
+
+

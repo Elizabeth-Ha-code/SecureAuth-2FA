@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if ($tfa->verifyCode($secret, $codigo2FA)) {
                     $_SESSION['usuario_id'] = $id;
                     $_SESSION['email'] = $email;
-                    $mensaje = "✅ Login exitoso con 2FA.";
+                    $mensaje = "✅ Login exitoso .";
                     $claseAlerta = "alert-success";
                     
                         header("Location: bienvenida.php");

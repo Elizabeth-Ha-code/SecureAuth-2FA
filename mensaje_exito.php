@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Edlyn.Perez*1405";
+$password = "cereza_08";
 $dbname = "clinica";
 
 // Crear conexión
@@ -29,11 +29,12 @@ if ($stmt->execute()) {
         $mensaje = "Registro guardado exitosamente.";
         ?>
         <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-                <img src="img/imegen4.jpg" alt="Éxito" class="success-img">
-                <p><?php echo htmlspecialchars($mensaje); ?></p>
-                <p>Redirigiendo en 3 segundos...</p>
+            <div class="modal-content" style="box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); background: linear-gradient(135deg, #e0ffe8 0%, #f0f9ff 100%);">
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'" title="Cerrar">&times;</span>
+            <img src="img/imegen4.jpg" alt="Éxito" class="success-img" style="border-radius: 50%; border: 4px solid #efb108ff; box-shadow: 0 4px 12px rgba(175, 149, 76, 0.2);">
+            <h2 style="color: #aa7d03ff; margin-bottom: 10px;">¡Éxito!</h2>
+            <p style="font-size: 25px; color: #333;"><?php echo htmlspecialchars($mensaje); ?></p>
+            <p style="color: #888; font-size: 20px;">Redirigiendo en 3 segundos...</p>
             </div>
         </div>
         <script>
