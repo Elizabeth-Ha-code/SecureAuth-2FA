@@ -13,7 +13,7 @@ la cual el cliente llena un formulario con su consulta y el administrador   se r
   -estilo3:mensaje de bienvenida
   -estilo4:para la pagina que genera el qr.
 - img: imágenes de fondo - de decoración y de validación de envío de información.
-- vendor: librería usada para funcionalidades de generaciond e código qr y  validación de  dos factores.
+- vendor: librería usada para funcionalidades de generación de código qr y  validación de dos factores.
 
 ## Herramientas 
  - Visual code
